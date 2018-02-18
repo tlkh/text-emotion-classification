@@ -3,6 +3,8 @@
 .AppleDouble
 .LSOverride
 
+dataset
+
 # Python
 __pycache__
 .ipynb_checkpoints
