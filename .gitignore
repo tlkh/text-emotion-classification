@@ -4,6 +4,8 @@
 .LSOverride
 
 dataset
+logs
+*.h5
 
 # Python
 __pycache__
