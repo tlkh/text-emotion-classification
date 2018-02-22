@@ -3,7 +3,7 @@
 .AppleDouble
 .LSOverride
 
-dataset
+dataset/glove
 logs
 *.h5
 
