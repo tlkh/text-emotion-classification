@@ -113,7 +113,7 @@ embedding_layer = Embedding(len(word_index) + 1,
 sequence_input = Input(shape=(MAX_SEQUENCE_LENGTH,), dtype='int32')
 embedded_sequences = embedding_layer(sequence_input)
 l_lstm1 = Bidirectional(LSTM(4,dropout=0.2,recurrent_dropout=0.2,return_sequences=True))(embedded_sequences)
-l_cov1= Conv1D(24, filter_size, activation='relu')(l_lstm1)
+l_cov1= Conv1D(32, filter_size, activation='relu')(l_lstm1)
 l_pool1 = MaxPooling1D(2)(l_cov1)
 l_drop1 = Dropout(0.3)(l_pool1)
 l_flat = Flatten()(l_drop1)
