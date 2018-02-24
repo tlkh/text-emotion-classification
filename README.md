@@ -12,6 +12,8 @@ We were inspired by previous work by other pioneers in the sentiment analysis an
 - Sentiment Analysis: from Binary to Multi-Class Classification (Bouazizi and Ohtsuki, 2017)
 - Twitter Sentiment Analysis using combined LSTM-CNN Models (Sosa, 2017)
 
+With the exception of Bouazizi and Ohtsuki (2017), very few papers describe the effectiveness of classifing short text sequences (such as tweets) into anything more than 3 distinct classes (positive/negative/neutral). In particular, Bouazizi and Ohtsuki only achieved an overall accuracy of 56.9% of 7 distinct classes. We hope to propose new models that can improve this accuracy.
+
 ## Methodology
 
 ### Choice of Neural Network Model
@@ -24,7 +26,7 @@ RNN, especially LSTM, is preferred for many NLP tasks as it "learns" the signifi
 
 We take elements from each of the above models and extend the idea of creating multi-channel networks where we allow the model to *attempt* to self-learn which channels allow it to get better predictions for certain classes of data. Our hypothesis is this will allow the model to use the overall advantages of the different channels to make overall better predictions.
 
-We call our prototype neural network BalanceNet.
+We call our prototype neural network **BalanceNet**.
 
 ### Multi-channel Approach
 
