@@ -1,47 +1,70 @@
-# text-emotion-classification
-We are reproducing the results of this paper: http://ieeexplore.ieee.org/document/8013027/
-> Sentiment Analysis: from Binary to Multi-Class Classification  
-> A Pattern-Based Approach for Multi-Class Sentiment Analysis in Twitter"  
-> Authors: Mondher Bouazizi, Tomoaki Ohtsuki
+# Multi-class Emotion Classification for Tweets
 
-# How to use this repo
+**Associate specific emotions (one of six classes) to short sequences of texts (such as tweets).**
 
-## Download Stanford NLP GloVe 
-(Global Vectors for Word Representation)
-https://nlp.stanford.edu/projects/glove/
-> GloVe is an unsupervised learning algorithm for obtaining vector representations for words. Training is performed on aggregated global word-word co-occurrence statistics from a corpus, and the resulting representations showcase interesting linear substructures of the word vector space.
+We make use of a few novel techniques, including multi-channel training and various combination of convolutional kernels and LSTM units to classify short text sequences (tweets) into specific enmotional classes.
 
-## Install tensorflow
-https://www.tensorflow.org/install/
-Timothy (who created this repo) ran his preliminary training on his MacBookPro 17in 2016. To optimise his the resource usage on his computer he has compiled tensorflow from source. It will be useful to people using might want to train their model on the same brand/model of computer (like me, Hui Kang).
+Our training and validation dataset is comprised of 45318 tweets from Twitter with labelled emotions of six classes: neutral, happy, sad, angry, hate, love.
 
-## Clone this repo
-Make a copy of this repo onto your computer.
-Extract the downladed Standford NLP GloVe into `\datasets\`
+We were inspired by previous work by other pioneers in the sentiment analysis and sentence classification field. Of note are the following:
 
-# Our method
-In our approach, we have some differences from the cited paper.
+- Convolutional Neural Networks for Sentence Classification(Yoo Kim, 2014)
+- Sentiment Analysis: from Binary to Multi-Class Classification (Bouazizi and Ohtsuki, 2017)
+- Twitter Sentiment Analysis using combined LSTM-CNN Models (Sosa, 2017)
 
-## Removal of emotion class "sacarsm"
-We decided to remove "sacarsm", Instead of the 7 emotion classes in the model. We removed sacarsm because the dataset did not have the label for sacarsm. So now we only have 6 emotion classes - namely
+## Methodology
 
-## Choice of neural network
-LSTM allows one to model to have an understanding of the global overview of the data, while CNN allows the model to have better local understanding of each segment of the data.
+### Choice of Neural Network Model
 
-We used both of them in our model. (to be elaborated)
+**TLDR; why choose when you can have all?**
+
+Long Answer: We play to the strengths of various approaches.
+
+RNN, especially LSTM, is preferred for many NLP tasks as it "learns" the significance of order of sequential data (such as texts). On the other hand, CNNs extract features from data to identify them. Previous approaches either use one method (Yoo Kim, 2014) or take a hybrid approach (Sosa, 2017). 
+
+We take elements from each of the above models and extend the idea of creating multi-channel networks where we allow the model to *attempt* to self-learn which channels allow it to get better predictions for certain classes of data. Our hypothesis is this will allow the model to use the overall advantages of the different channels to make overall better predictions.
+
+We call our prototype neural network BalanceNet.
+
+### Multi-channel Approach
+
+We omit having to make the following choices:
+
+- Freezing the weights of the word embeddings from pre-trained GloVe vectors
+ - this will allow the model to both maintain generalised embeddings and learn more specific embeddings
+- Choosing the CNN kernel size
+ - We use multiple sizes to allow features of different sizes to be extracted from input data
+- Choosing the order of which we pass the input sequence into the model (CNN to LSTM or LSTM to CNN)
+ - We use both approaches so we can both extract features from sequential output from the LSTM and extract features to be fed into an LSTM.
+
+We can concatenate all the channels and perform max-pooling. The last layer is a fully-connected layer which will then produce a prediction via a softmax activation function.
+
+![balancenet](images/balancenet.jpg)
+
+We make use of dropout and L2 regularisation at specific portions of the network to reduce the possibility of over fitting the training data.
 
 # Dataset
-## Original Dataset
-We used the original dataset is 40k tweets that are manually classified into six emotion classes.
 
-## Additional dataset
-We also pulled data from the Twitter using Twitter API as additional tranining data. The tweets are classified with their own hashtags - for example "#happy".
-We feel that hastags should be a good representation of the sentiment of the tweet. While it is conceiveable for someone to tweet something like "Uh, I got 90 for A levels #sad", this is a very small minority and can be statistical noise.
+## Original Dataset
+
+The original dataset is comprised of 40,000 tweets classified into 13 emotion classes. However, previous authors have described that several of those classes were in fact extremely similar, and repeated efforts to relabel the data only result in about 70% agreement. Hence, we make the decision to combine several of those classes into six final classes. These six classes are also the same as in (Bouazizi and Ohtsuki, 2017) but with the absence of the sarcasm class.
+
+## Additional Data
+
+We also pulled data from the Twitter using Twitter API as additional training data. The tweets are classified with their own hashtags - for example "#happy".
+We feel that hastags should be a relatively good (but far from perfect) representation of the sentiment of the tweet. While it is conceiveable for someone to tweet something like "Uh, I got 90 for A levels #sad", this is a very small minority and can be statistical noise.
+
+## Running the Code
+
+1. Download pre-trained GloVe vectors from [Stanford NLP](https://nlp.stanford.edu/projects/glove/). We will be using the 200-dimensional embedding.
+2. Place the GloVe vectors in /data/set/glove
+3. Run one of the notebooks!
+
+Requirements: Python 3, TensorFlow, Keras and NLTK
 
 # Questions
 - What is the impact on removing sacarsm?
 - What about slangs? It should be covered in GLoVe which has 27 billion embeddings.
 - Emotions? They may have removed it.
 - Lemmatization (using only root words)? Not doing it because it makes a difference in emotion
-
 
