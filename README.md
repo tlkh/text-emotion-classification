@@ -8,11 +8,13 @@ Classifing short sequences of text into many classes is still an uncommon topic 
 
 Our training and validation dataset is comprised of 45,309 tweets from Twitter with labelled emotions of five classes: **neutral**, **happy**, **sad**, **angry**, **hate**.
 
-We have achieved a positive result by achieving **62.37%** overall classification accuracy. In particular, we have achieved good classification accuracy on happy, sad and anger classes. Hate was often mis-classified as sadness while neutral has often mis-classified as happy or sad.
+We have achieved a positive result by achieving up to **62.37%** overall classification accuracy.
 
-![confusion_matrix](images/26_02.png)
+![confusion_matrix](images/cm_26_02.jpg)
 
-Comparing to previous papers on this specific problem (Bouazizi and Ohtsuki, 2017), we fared worse in classifying neutral and hate, but fared better in sadness and anger. Happiness is not a good comparison due to us merging two similar classes (fun and happy, or love and happy) as compared to 
+In particular, we have achieved good classification accuracy on happy, sad and anger classes. Hate was often mis-classified as sadness while neutral has often mis-classified as happy or sad.
+
+Compared to previous papers on this specific problem (Bouazizi and Ohtsuki, 2017), we fared worse in classifying neutral and hate, but fared better in sadness and anger. Happiness is not a good comparison due to us merging two similar classes (fun and happy, or love and happy) as compared to the original paper.
 
 ## Methodology
 
