@@ -69,7 +69,7 @@ We feel that hashtags should be a appreciably good (but far from perfect) repres
 
 1. Download pre-trained GloVe vectors from [Stanford NLP](https://nlp.stanford.edu/projects/glove/). We will be using the 200-dimensional embedding.
 2. Place the GloVe vectors in /data/set/glove
-3. Run one of the notebooks!
+3. Run one of the notebooks! (highlight: [BalanceNet 1.0](BalanceNet-1.0.ipynb))
 
 General Requirements: Python 3, TensorFlow, Keras and NLTK
 
