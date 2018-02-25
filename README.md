@@ -12,6 +12,8 @@ We have achieved a positive result by achieving **62.37%** overall classificatio
 
 ![confusion_matrix](images/26_02.png)
 
+Comparing to previous papers on this specific problem (Bouazizi and Ohtsuki, 2017), we fared worse in classifying neutral and hate, but fared better in sadness and anger. Happiness is not a good comparison due to us merging two similar classes (fun and happy, or love and happy) as compared to 
+
 ## Methodology
 
 We were inspired by previous work by other pioneers in the sentiment analysis and sentence classification field. Of note are the following:
