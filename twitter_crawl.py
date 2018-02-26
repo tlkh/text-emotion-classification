@@ -24,7 +24,7 @@ query = "hate"
 print("starting crawl:",query)
 
 try:
-    for tweet in tweepy.Cursor(api.search,q="#"+query,lang="en",since="2017-12-12").items(1000):
+    for tweet in tweepy.Cursor(api.search,q="#"+query,lang="en",since="2017-01-01").items(2000):
         text = tweet.text.replace("&amp;","&").replace(",","").replace("RT","")
         print(text)
         tweets.append(text)

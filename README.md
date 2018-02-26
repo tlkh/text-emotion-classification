@@ -10,7 +10,7 @@ Our training and validation dataset is comprised of 45,309 tweets from Twitter w
 
 We have achieved a positive result by achieving up to **62.37%** overall classification accuracy.
 
-![confusion_matrix](images/cm_26_02.jpg)
+![confusion_matrix](images/cm_27_02.jpg)
 
 In particular, we have achieved good classification accuracy on happy, sad and anger classes. Hate was often mis-classified as sadness while neutral has often mis-classified as happy or sad.
 
