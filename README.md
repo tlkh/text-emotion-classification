@@ -2,13 +2,13 @@
 
 **Associating specific emotions to short sequences of texts**
 
-We propose using "multi-channel" combinations of convolutional kernels (aka CNN) and Long Short-Term Memory (LSTM) units to classify short text sequences (tweets) into one of five emotional classes, as opposed to binary (positive/negative) or tenary (positive/negative/neutral).
+We propose using "multi-channel" combinations of convolutional kernels (aka CNN) and Long Short-Term Memory (LSTM) units to classify short text sequences (tweets) into one of five emotional classes, as opposed to binary (positive/negative) or ternary (positive/negative/neutral).
 
 Classifing short sequences of text into many classes is still an uncommon topic of research. In particular, with the exception of Bouazizi and Ohtsuki (2017), few authors describe the effectiveness of classifing short text sequences (such as tweets) into anything more than 3 distinct classes (positive/negative/neutral). In particular, Bouazizi and Ohtsuki only achieved an overall accuracy of 56.9% or 60.2% of seven distinct classes in two of their papers. We hope to propose a new approach that can improve classification accuracy by a appreciable amount.
 
 Our training and validation dataset is comprised of 47,288 tweets from Twitter with labelled emotions of five classes: **neutral**, **happy**, **sad**, **anger**, **hate**.
 
-We have achieved a positive result by achieving up to **62%** overall classification accuracy and precision.
+We have achieved a positive result by achieving exceeding **62%** overall classification accuracy and precision.
 
 ![confusion_matrix](images/cm_27_02.jpg)
 
@@ -88,7 +88,4 @@ General Requirements: Python 3, TensorFlow, Keras and NLTK
 
 **Contributors**: Tong Hui Kang, Chia Yew Ken
 
-**Institution**: Singapore University of Technology and Design (SUTD) as part of an undergraduate research project on combating Fake News and Disinformation
-
-
-
+**Institution**: Singapore University of Technology and Design (SUTD)
