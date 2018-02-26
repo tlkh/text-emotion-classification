@@ -10,9 +10,9 @@ Our training and validation dataset is comprised of 47,288 tweets from Twitter w
 
 We have achieved a positive result by achieving exceeding **62%** overall classification accuracy and precision.
 
-![confusion_matrix](images/cm_27_02.jpg)
+![confusion_matrix](images/confusion_matrix.jpg)
 
-In particular, we have achieved good classification accuracy on happy, sad, hate and anger classes. Hate and anger were sometimes misclassified as sadness.
+In particular, we have achieved good classification accuracy on happy, sad, hate and anger (97% precision!) classes. Hate and anger were sometimes misclassified as sadness.
 
 Compared to previous papers on this specific problem (Bouazizi and Ohtsuki, 2017), we fared worse in classifying neutral and hate, but fared better in sadness and anger. Happiness is not a good comparison due to us merging two similar classes (fun and happy, or love and happy) as compared to the original paper.
 
@@ -61,7 +61,7 @@ We introduce dropout and L2 regularisation at specific portions of the network (
 
 ## Original Dataset
 
-The original dataset is comprised of 40,000 tweets classified into 13 emotion classes. However, previous authors have described that several of those classes were in fact extremely similar, and repeated efforts to relabel the data only result in 72% agreement. Hence, we make the decision to combine several of those classes into five final classes. These five classes are also the same as in Bouazizi and Ohtsuki (2017), with the absence of the sarcasm and love classes (*Binary to Multi-Class Classification*) or fun and love classes (*Pattern-Based Approach for Multi-Class Sentiment Analysis*). 
+The original dataset is comprised of 40,000 tweets classified into 13 emotion classes. However, previous authors have described that several of those classes were in fact extremely similar, and repeated efforts to re-label the data only result in 72% agreement. Hence, we make the decision to combine several of those classes into five final classes. These five classes are also the same as in Bouazizi and Ohtsuki (2017), with the absence of the sarcasm and love classes (*Binary to Multi-Class Classification*) or fun and love classes (*Pattern-Based Approach for Multi-Class Sentiment Analysis*). 
 
 ## Additional Data
 
