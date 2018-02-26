@@ -85,7 +85,9 @@ General Requirements: Python 3, TensorFlow, Keras and NLTK
 - Lemmatization (using only root words)? Not doing it because it makes a difference in emotion. 
 
 **Principal Investigator**: Timothy Liu
+
 **Contributors**: Tong Hui Kang, Chia Yew Ken
+
 **Institution**: Singapore University of Technology and Design (SUTD) as part of an undergraduate research project on combating Fake News and Disinformation
 
 
