@@ -2,17 +2,17 @@
 
 **Associating specific emotions to short sequences of texts**
 
-We propose using "multi-channel" combinations of convolutional kernels and LSTM (Long Short-Term Memory) units to classify short text sequences (tweets) into one of five emotional classes, as opposed to the usual positive or negative (or neutral).
+We propose using "multi-channel" combinations of convolutional kernels (aka CNN) and Long Short-Term Memory (LSTM) units to classify short text sequences (tweets) into one of five emotional classes, as opposed to binary (positive/negative) or tenary (positive/negative/neutral).
 
-Classifing short sequences of text into many classes is still an uncommon topic of research. In particular, with the exception of Bouazizi and Ohtsuki (2017), very few papers describe the effectiveness of classifing short text sequences (such as tweets) into anything more than 3 distinct classes (positive/negative/neutral). In particular, Bouazizi and Ohtsuki only achieved an overall accuracy of 56.9% or 60.2% of seven distinct classes in two of their papers. We hope to propose a new approach that can improve classification accuracy by a appreciable amount.
+Classifing short sequences of text into many classes is still an uncommon topic of research. In particular, with the exception of Bouazizi and Ohtsuki (2017), few authors describe the effectiveness of classifing short text sequences (such as tweets) into anything more than 3 distinct classes (positive/negative/neutral). In particular, Bouazizi and Ohtsuki only achieved an overall accuracy of 56.9% or 60.2% of seven distinct classes in two of their papers. We hope to propose a new approach that can improve classification accuracy by a appreciable amount.
 
-Our training and validation dataset is comprised of 45,309 tweets from Twitter with labelled emotions of five classes: **neutral**, **happy**, **sad**, **angry**, **hate**.
+Our training and validation dataset is comprised of 47,288 tweets from Twitter with labelled emotions of five classes: **neutral**, **happy**, **sad**, **anger**, **hate**.
 
-We have achieved a positive result by achieving up to **62.37%** overall classification accuracy.
+We have achieved a positive result by achieving up to **62%** overall classification accuracy and precision.
 
 ![confusion_matrix](images/cm_27_02.jpg)
 
-In particular, we have achieved good classification accuracy on happy, sad and anger classes. Hate was often mis-classified as sadness while neutral has often mis-classified as happy or sad.
+In particular, we have achieved good classification accuracy on happy, sad, hate and anger classes. Hate and anger were sometimes misclassified as sadness.
 
 Compared to previous papers on this specific problem (Bouazizi and Ohtsuki, 2017), we fared worse in classifying neutral and hate, but fared better in sadness and anger. Happiness is not a good comparison due to us merging two similar classes (fun and happy, or love and happy) as compared to the original paper.
 
@@ -20,10 +20,11 @@ Compared to previous papers on this specific problem (Bouazizi and Ohtsuki, 2017
 
 We were inspired by previous work by other pioneers in the sentiment analysis and sentence classification field. Of note are the following:
 
-- Convolutional Neural Networks for Sentence Classification(Yoo Kim, 2014)
-- Twitter Sentiment Analysis using combined LSTM-CNN Models (Sosa, 2017)
-- A Pattern-Based Approach for Multi-Class Sentiment Analysis in Twitter (Bouazizi and Ohtsuki, 2017)
-- Sentiment Analysis: from Binary to Multi-Class Classification (Bouazizi and Ohtsuki, 2017)
+- *Convolutional Neural Networks for Sentence Classification* (Yoo Kim, 2014)
+- *Twitter Sentiment Analysis using combined LSTM-CNN Models* (Sosa, 2017)
+- *A Pattern-Based Approach for Multi-Class Sentiment Analysis in Twitter* (Bouazizi and Ohtsuki, 2017)
+- *Sentiment Analysis: from Binary to Multi-Class Classification* (Bouazizi and Ohtsuki, 2017)
+- *Experimenting with Distant Supervision for Emotion Classiﬁcation* (Purver and Battersby, 2012)
 
 ### Choice of Neural Network Model
 
@@ -75,11 +76,17 @@ We feel that hashtags should be a appreciably good (but far from perfect) repres
 
 General Requirements: Python 3, TensorFlow, Keras and NLTK
 
-# Questions
-- What is the impact of number of classes on classification accuracy?
+# Other thoughts
+- What is the actual impact of number of classes on classification accuracy?
 - Why is the neutral class so difficult to predict?
 - How can we tune the hyper-parameters of the model to achieve better accuracy?
 - What about slangs? It should be covered in GLoVe which has 27 billion embeddings.
 - Emoji? Removed. Not in pre-trained vectors as well. They would be useful.
 - Lemmatization (using only root words)? Not doing it because it makes a difference in emotion. 
+
+**Principal Investigator**: Timothy Liu
+**Contributors**: Tong Hui Kang, Chia Yew Ken
+**Institution**: Singapore University of Technology and Design (SUTD) as part of an undergraduate research project on combating Fake News and Disinformation
+
+
 
