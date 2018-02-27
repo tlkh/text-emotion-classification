@@ -1,4 +1,4 @@
-# Multi-class Emotion Classification for Tweets
+# Multi-class Emotion Classification for Short Texts
 
 **Associating specific emotions to short sequences of texts**
 
@@ -67,6 +67,12 @@ The original dataset is comprised of 40,000 tweets classified into 13 emotion cl
 
 We also pulled data from the Twitter using Twitter API as additional training data. The tweets are classified with their own hashtags - for example "#happy".
 We feel that hashtags should be a appreciably good (but far from perfect) representation of the sentiment of the tweet. While it is conceiveable for someone to tweet something like "Uh, I got 90 for A levels #sad", this is a very small minority and can be taken statistical noise, which might have the added benefit of reduce over-fitting of training data.
+
+## Is the data good/appropriate?
+
+Being tweets, the text is short, informal, and spans a wide range of subjects. Hence, there is a good chance we will be able to use this dataset to create a baseline to classify short comments on other medium (such as on news websites) into the same classes of emotion. 
+
+In the future, we might also be able to create a smaller dataset of **comments** with labelled emotions to further improve the accuracy of this model.
 
 ## Running the Code
 
