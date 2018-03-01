@@ -4,4 +4,4 @@
 #rm -R logs && mkdir logs
 
 # run tensorboard on local IP address
-tensorboard --logdir=logs --host=10.12.115.65 --port=6006
+tensorboard --logdir=logs --host=35.189.176.14 --port=6009
