@@ -5,8 +5,8 @@ print(platform.python_version())
 print("Importing Modules")
 
 try:
-    import tensorflow
-    print("TensorFlow version:", tensorflow.__version__)
+    import tensorflow as tf
+    print("TensorFlow version:", tf.__version__)
     import keras
     import h5py
     print("Keras version:", keras.__version__)
@@ -19,5 +19,11 @@ try:
 except Exception as e:
     print("Error in importing modules!")
     print(str(e))
+
+print("Testing TensorFlow")
+
+hello = tf.constant('Hello, TensorFlow!')
+sess = tf.Session()
+print(sess.run(hello))
 
 print("End of script...")
