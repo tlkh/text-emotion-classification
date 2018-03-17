@@ -8,13 +8,21 @@ Classifing short sequences of text into many classes is still a relatively uncom
 
 Our training and validation dataset is comprised of 47,288 tweets from Twitter with labelled emotions of five classes: **neutral**, **happy**, **sad**, **anger**, **hate**.
 
-We have achieved a positive result by achieving exceeding **62%** overall classification accuracy and precision.
+We have achieved a positive result by achieving more than **62%** overall classification accuracy and precision.
 
 ![confusion_matrix](images/confusion_matrix.jpg)
 
-In particular, we have achieved good classification accuracy on happy, sad, hate and anger (97% precision!) classes. Hate and anger were sometimes misclassified as sadness.
+[Jupyter Notebook](https://github.com/tlkh/text-emotion-classification/blob/master/BalanceNet-1.0.ipynb): 62.29% peak validation accuracy, 0.62% overall precision.
 
-Compared to previous papers on this specific problem (Bouazizi and Ohtsuki, 2017), we fared worse in classifying neutral and hate, but fared better in sadness and anger. Happiness is not a good comparison due to us merging two similar classes (fun and happy, or love and happy) as compared to the original paper.
+In particular, we have achieved good validation accuracy on happy, sad, hate and anger (91% precision!) classes. Hate and anger were sometimes misclassified as sadness (occurs in Test data as well).
+
+Compared to previous papers on this specific problem (Bouazizi and Ohtsuki, 2017), we fared worse in classifying neutral. Happiness is not a good comparison due to us merging two similar classes (fun and happy, or, love and happy) as compared to the original paper.
+
+### Why are we doing this?
+
+We are part of a team in SUTD that are working on a project to tackle the problem of Fake News. We want to prevent Singaporeans from falling victim to disinformation, hoaxes and Fake News. We are developing a system to indicate to readers (through a Chrome extension and a dedicated discussion forum) warning signs that indicate a particular article might be illegitimate. One of those warning signs are indications that people are reacting (through comments) to the news with either negative/wide spectrum of emotion, confusion, or offensive comments.
+
+Hence, we are exploring how we can classify and label the comments on articles in a meaningful way.
 
 ## Methodology
 
@@ -57,6 +65,8 @@ We can concatenate all the channels and perform max-pooling. The last layer is a
 
 We introduce dropout and L2 regularisation at specific portions of the network (especially the higher kernel sizes) to reduce the possibility of over fitting the training data.
 
+Also it actually looks like a mass balance.
+
 ## Dataset
 
 ### Original Dataset
@@ -73,8 +83,6 @@ We feel that hashtags should be a appreciably good (but far from perfect) repres
 
 Being tweets, the text is short, informal, and spans a wide range of subjects. Hence, there is a good chance we will be able to use this dataset to create a baseline to classify short comments on other medium (such as on news websites) into the same classes of emotion. 
 
-In the future, we might also be able to create a smaller dataset of **comments** with labelled emotions to further improve the accuracy of this model.
-
 ## Testing the model on "local" data
 
 (Warning, some hateful online language ahead!!)
@@ -89,13 +97,17 @@ Our results led us to two conclusions:
 2. **Sacarsm** was the major problem. Our model did not learn sarcasm, and thus misclassifies comments which are sarcastic. In a production setting, we propose using another seperate model to detect sarcasm, and to discard the results from this model should the other model detect a high level of sarcasm.
 3. Many comments express multiple emotions. Hence, it might be worthwhile to consider multi-label classification to, for example, label a comment as both angry and sad.
 
+In the future, we might also be also able to create a small dataset of **comments** with labelled emotions to further improve the accuracy of this model.
+
 ## Running the Code
 
 1. Download pre-trained GloVe vectors from [Stanford NLP](https://nlp.stanford.edu/projects/glove/). We will be using the 200-dimensional embedding pre-trained on Twitter.
-2. Place the GloVe vectors in /data/set/glove
+2. Place the GloVe vectors in /dataset/glove
 3. Run one of the notebooks! (highlight: [BalanceNet 1.0](BalanceNet-1.0.ipynb))
 
 General Requirements: Python 3, TensorFlow, Keras and NLTK
+
+The model is actually light enough to be trained on a CPU. It was initially trained on my MacBook Pro.
 
 ## TODO
 
